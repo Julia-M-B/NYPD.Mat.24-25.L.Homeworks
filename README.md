@@ -1,1 +1,1 @@
-# NYPD.Mat.24-25.L.Homeworks
+# Homeworks for course [Tools Supporting Data Analysis in Python](https://usosweb.fuw.edu.pl/kontroler.php?_action=katalog2/przedmioty/pokazPrzedmiot&kod=1000-1M20NPD)
