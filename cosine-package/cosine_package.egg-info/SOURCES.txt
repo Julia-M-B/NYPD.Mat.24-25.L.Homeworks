@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+cosine_package.egg-info/PKG-INFO
+cosine_package.egg-info/SOURCES.txt
+cosine_package.egg-info/dependency_links.txt
+cosine_package.egg-info/entry_points.txt
+cosine_package.egg-info/requires.txt
+cosine_package.egg-info/top_level.txt
+my_utils/__init__.py
+my_utils/my_utils.py

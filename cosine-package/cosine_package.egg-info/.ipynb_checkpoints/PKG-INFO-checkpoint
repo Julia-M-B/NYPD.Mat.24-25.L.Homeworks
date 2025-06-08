@@ -1,0 +1,29 @@
+Metadata-Version: 2.4
+Name: cosine-package
+Version: 1.0
+Summary: This is a python package for calculating cosine.
+Author-email: Julia Bochniarz <j.bochniarz@student.uw.edu.pl>
+Project-URL: Repository, https://github.com/Julia-M-B/NYPD.Mat.24-25.L.Homeworks
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Private :: Do Not Upload
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=2.1.0
+
+# Python package installable via pip for computing cosine for given numbers
+
+## Usage:
+
+Clone this repository to your computer then run a command:
+```pip install ./cosine-package```
+ to install this script as a python package.
+
+Run script in command line using:
+```mycosin n1 n2 n3 ...``` 
+to compute cosine function for n1, n2, n3, ... arguments.

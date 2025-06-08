@@ -1,0 +1,2 @@
+[console_scripts]
+mycos = my_utils.my_utils:main
