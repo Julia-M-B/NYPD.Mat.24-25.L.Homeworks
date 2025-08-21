@@ -1,0 +1,41 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# Virtual environments
+**/.venv/
+**/venv/
+**/env/
+**/.env/
+
+# Jupyter Notebook checkpoints
+**/.ipynb_checkpoints/
+
+# Build artifacts and package info
+**/build/
+**/dist/
+**/*.egg-info/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# IDE files
+**/.idea/
+**/.vscode/
+**/*.swp
+**/*.swo
+
+# Temporary files
+**/.tmp*
+**/*~
+**/*.tmp
+
+# Other files
+**/.xdp*
+**/Final assignment in NYPD 24_25.pdf
