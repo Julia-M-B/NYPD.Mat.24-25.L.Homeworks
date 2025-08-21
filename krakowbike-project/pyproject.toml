@@ -3,12 +3,12 @@ requires = ["setuptools>=72"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cosine-package"
+name = "krakowbike"
 version = "1.0"
 authors = [
     {name = "Julia Bochniarz", email = "j.bochniarz@student.uw.edu.pl"},
 ]
-description = "This is a python package for calculating cosine."
+description = "Python package for analyzing cycling traffic in Krakow, including weather data."
 readme = {file = "README.md", content-type = "text/markdown"}
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -22,14 +22,19 @@ classifiers = [
     "Private :: Do Not Upload",
 ]
 dependencies = [
-    "numpy >= 2.1.0"
+    "numpy >= 2.2.6",
+    "pandas >= 2.3.0",
+    "pytest >= 8.4.0",
+    "Jinja2 >= 3.1.6",
+    "seaborn >= 0.13.2",
+    "matplotlib >= 3.10.3",
 ]
 
 [project.urls]
 Repository = "https://github.com/Julia-M-B/NYPD.Mat.24-25.L.Homeworks"
 
 [project.scripts]
-mycos = "my_utils.my_utils:main"
+genreport = "src.krakowbike.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
