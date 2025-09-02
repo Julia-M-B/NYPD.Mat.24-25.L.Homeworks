@@ -8,7 +8,7 @@ This Python package provides comprehensive analysis tools for bicycle traffic pa
 
 ## Features
 
-- **Data Analysis**: Correlation analysis between weather conditions and bicycle traffic using pandas and numpy
+- **Data Analysis**: Correlation analysis between weather conditions and bicycle traffic using pandas
 - **Data Visualization**: Charts and plots generated with matplotlib and seaborn
 - **Automated Reporting**: HTML report generation that automatically opens in your browser
 - **Flexible Time Periods**: Analyze data for any custom date range within the available dataset
@@ -47,6 +47,14 @@ Example with custom parameters:
 genreport -p path/to/krakowbike-project -o path/to/output/directory -r my_custom_report -s 2018-06-01 -e 2019-12-31
 ```
 
+## Data Sources
+
+This package integrates data from three reliable sources:
+
+- **Bicycle Traffic Data**: [ZTP Krakow](https://ztp.krakow.pl/rower/pomiary-ruchu-rowerowego/dane-tabelaryczne) - Official bicycle traffic measurements in Krakow
+- **Air Quality Data**: [GIOŚ (Chief Inspectorate of Environmental Protection)](https://powietrze.gios.gov.pl/pjp/archives) - Environmental monitoring data
+- **Weather Data**: [IMGW (Institute of Meteorology and Water Management)](https://danepubliczne.imgw.pl/data/arch/ost_meteo/) - Meteorological archives
+
 ## Data Coverage
 
 The analysis covers bicycle traffic data from **January 2017 to December 2021**, allowing you to explore traffic patterns across different seasons and weather conditions in Krakow.
@@ -60,6 +68,5 @@ The analysis covers bicycle traffic data from **January 2017 to December 2021**,
 
 ## Requirements
 
-- Python 3.9 or higher
-
-For a complete list of dependencies, see `requirements.txt`.
+- Python 3.10 or higher
+- Jupyter notebook
