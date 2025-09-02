@@ -1,4 +1,6 @@
 import argparse
+import os
+import webbrowser
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -80,7 +82,7 @@ def main():
     parser.add_argument(
         "-e",
         "--end_date",
-        help="",
+        help="End date of analyzed period.",
         default="2021-12-31",
     )
     args = parser.parse_args()
@@ -93,11 +95,14 @@ def main():
     )
 
     content = template.render(krakow_data)
-    report_path = f"{args.output_dir}/{args.file_name}.html"
-    with open(report_path, mode="w", encoding="utf-8") as report:
+    report_abs_path = os.path.abspath(f"{args.output_dir}/{args.report_name}.html")
+    with open(report_abs_path, mode="w", encoding="utf-8") as report:
         report.write(content)
         print(
-            f"Created {args.file_name}.html report in {args.output_dir} directory.")
+            f"Created {args.report_name}.html report in {args.output_dir} directory.")
+
+    # open created report in a web browser
+    webbrowser.open_new_tab(report_abs_path)
 
 
 if __name__ == "__main__":
