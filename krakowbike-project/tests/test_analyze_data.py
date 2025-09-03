@@ -16,11 +16,6 @@ MOCK_AIR_COLUMN = "Air_quality_column"
 MOCK_MONTH_TO_SEASON = {"January": "Winter"}
 
 
-#########################################
-# TODO complete functions' documentation
-#########################################
-
-
 @pytest.fixture
 def sample_dataframe():
     dates = [
