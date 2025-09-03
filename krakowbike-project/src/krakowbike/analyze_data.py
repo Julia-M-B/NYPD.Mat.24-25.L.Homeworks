@@ -1,11 +1,8 @@
 import pandas as pd
-
 from src.krakowbike.utils import AIR_COLUMN, MONTH_TO_SEASON, STREET_NAMES
 
 
-def calculate_basic_statistics(
-        df: pd.DataFrame, for_html: bool = False
-) -> pd.DataFrame | str:
+def calculate_basic_statistics(df: pd.DataFrame, for_html: bool = False) -> pd.DataFrame | str:
     """
     Return data frame with basic statistics (mean, std, min, max)
     for each column in a given dataframe.
@@ -44,8 +41,7 @@ def weather_summary(df: pd.DataFrame, for_html: bool = False) -> dict:
     df_copy["temp_category"] = pd.cut(
         df_copy[temp_col],
         bins=[-float("inf"), 0, 10, 20, float("inf")],
-        labels=["Cold (<0°C)", "Cool (0-10°C)", "Mild (10-20°C)",
-                "Warm (>20°C)"],
+        labels=["Cold (<0°C)", "Cool (0-10°C)", "Mild (10-20°C)", "Warm (>20°C)"],
     )
 
     precip_col = "Suma dobowa opadów [mm]"
@@ -58,8 +54,7 @@ def weather_summary(df: pd.DataFrame, for_html: bool = False) -> dict:
     df_copy["air_category"] = pd.cut(
         df_copy[AIR_COLUMN],
         bins=[-float("inf"), 20, 50, 80, 110, 150, float("inf")],
-        labels=["Very good", "Good", "Moderate", "Sufficient", "Bad",
-                "Vary bad"],
+        labels=["Very good", "Good", "Moderate", "Sufficient", "Bad", "Vary bad"],
     )
     summary = {
         "temperature_impact": df_copy.groupby("temp_category", observed=True)[
@@ -103,20 +98,17 @@ def calculate_seasonal_trends(df: pd.DataFrame, for_html: bool = False) -> dict:
         "monthly_patterns": df_copy.groupby("month")["total_daily_traffic"].agg(
             ["mean", "sum", "std"]
         ),
-        "seasonal_patterns": df_copy.groupby("season")[
-            "total_daily_traffic"].agg(
+        "seasonal_patterns": df_copy.groupby("season")["total_daily_traffic"].agg(
             ["mean", "sum", "std"]
         ),
-        "weekly_patterns": df_copy.groupby("day_of_week")[
-            "total_daily_traffic"].agg(
+        "weekly_patterns": df_copy.groupby("day_of_week")["total_daily_traffic"].agg(
             ["mean", "sum", "std"]
         ),
     }
     for k, v in analysis_results.items():
         analysis_results[k] = round(v, 2)
     if for_html:
-        analysis_results = dict(
-            [(k, v.to_html()) for k, v in analysis_results.items()])
+        analysis_results = dict([(k, v.to_html()) for k, v in analysis_results.items()])
 
     return analysis_results
 
@@ -142,5 +134,4 @@ def calculate_weather_correlations(df: pd.DataFrame) -> dict:
             df_copy[weather_col]
         )
 
-    return dict(
-        sorted(correlations.items(), key=lambda x: abs(x[1]), reverse=True))
+    return dict(sorted(correlations.items(), key=lambda x: abs(x[1]), reverse=True))

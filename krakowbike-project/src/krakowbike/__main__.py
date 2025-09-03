@@ -3,15 +3,13 @@ import os
 import webbrowser
 
 from jinja2 import Environment, FileSystemLoader
-
 from src.krakowbike.analyze_data import (
     calculate_basic_statistics,
     calculate_seasonal_trends,
     calculate_weather_correlations,
     weather_summary,
 )
-from src.krakowbike.load_data import load_air_data, load_bike_data, \
-    load_weather_data
+from src.krakowbike.load_data import load_air_data, load_bike_data, load_weather_data
 from src.krakowbike.preprocess_data import preprocess_dataset
 from src.krakowbike.visualize_data import (
     plot_correlation_matrix,
@@ -21,10 +19,9 @@ from src.krakowbike.visualize_data import (
 )
 
 
-def generate_data_for_html_report(
-        project_path: str, start_date: str = "2017-01-01",
-        end_date: str = "2021-12-31"
-) -> dict:
+def generate_data_for_html_report(project_path: str,
+                                  start_date: str = "2017-01-01",
+                                  end_date: str = "2021-12-31") -> dict:
     path_to_data = f"{project_path}/krakow_data"
     df = preprocess_dataset(
         load_air_data(path_to_data),
@@ -87,8 +84,7 @@ def main():
     )
     args = parser.parse_args()
 
-    environment = Environment(
-        loader=FileSystemLoader(f"{args.project_path}/templates"))
+    environment = Environment(loader=FileSystemLoader(f"{args.project_path}/templates"))
     template = environment.get_template("report.html")
     krakow_data = generate_data_for_html_report(
         args.project_path, args.start_date, args.end_date
@@ -98,8 +94,7 @@ def main():
     report_abs_path = os.path.abspath(f"{args.output_dir}/{args.report_name}.html")
     with open(report_abs_path, mode="w", encoding="utf-8") as report:
         report.write(content)
-        print(
-            f"Created {args.report_name}.html report in {args.output_dir} directory.")
+        print(f"Created {args.report_name}.html report in {args.output_dir} directory.")
 
     # open created report in a web browser
     webbrowser.open_new_tab(report_abs_path)

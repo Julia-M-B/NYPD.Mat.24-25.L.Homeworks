@@ -1,8 +1,12 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-
-from src.krakowbike.utils import AIR_COLUMN, MONTH_TO_SEASON, STREET_NAMES, save_plot_as_base64
+from src.krakowbike.utils import (
+    AIR_COLUMN,
+    MONTH_TO_SEASON,
+    STREET_NAMES,
+    save_plot_as_base64,
+)
 
 
 def plot_total_daily_traffic(df: pd.DataFrame, save_plot: bool = False) -> str | None:
@@ -33,7 +37,13 @@ def plot_correlation_matrix(df: pd.DataFrame, save_plot: bool = False) -> str | 
     """
     plt.figure(figsize=(15, 15))
     cols = [col for col in df.columns if not col in STREET_NAMES]
-    sns.heatmap(df[cols].corr(), annot=True, cmap='Blues', vmin=-1, vmax=1, )
+    sns.heatmap(
+        df[cols].corr(),
+        annot=True,
+        cmap="Blues",
+        vmin=-1,
+        vmax=1,
+    )
     plt.title("Correlation matrix")
     if save_plot:
         return save_plot_as_base64()

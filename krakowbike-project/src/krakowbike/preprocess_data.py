@@ -1,5 +1,4 @@
 import pandas as pd
-
 from src.krakowbike.utils import STREET_NAMES
 
 
