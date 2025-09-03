@@ -3,15 +3,15 @@ import os
 import webbrowser
 
 from jinja2 import Environment, FileSystemLoader
-from src.krakowbike.analyze_data import (
+from krakowbike.analyze_data import (
     calculate_basic_statistics,
     calculate_seasonal_trends,
     calculate_weather_correlations,
     weather_summary,
 )
-from src.krakowbike.load_data import load_air_data, load_bike_data, load_weather_data
-from src.krakowbike.preprocess_data import preprocess_dataset
-from src.krakowbike.visualize_data import (
+from krakowbike.load_data import load_air_data, load_bike_data, load_weather_data
+from krakowbike.preprocess_data import preprocess_dataset
+from krakowbike.visualize_data import (
     plot_correlation_matrix,
     plot_total_daily_traffic,
     visualize_seasonal_traffic,

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from src.krakowbike.utils import (
+from krakowbike.utils import (
     AIR_COLUMN,
     MONTH_TO_SEASON,
     STREET_NAMES,

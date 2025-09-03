@@ -1,7 +1,7 @@
-from src.krakowbike.analyze_data import *
-from src.krakowbike.load_data import *
-from src.krakowbike.preprocess_data import *
-from src.krakowbike.visualize_data import *
+from krakowbike.analyze_data import *
+from krakowbike.load_data import *
+from krakowbike.preprocess_data import *
+from krakowbike.visualize_data import *
 
 __all__ = [
     "load_bike_data",

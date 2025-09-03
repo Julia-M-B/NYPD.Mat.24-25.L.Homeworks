@@ -1,5 +1,5 @@
 import pandas as pd
-from src.krakowbike.utils import AIR_COLUMN, MONTH_TO_SEASON, STREET_NAMES
+from krakowbike.utils import AIR_COLUMN, MONTH_TO_SEASON, STREET_NAMES
 
 
 def calculate_basic_statistics(df: pd.DataFrame, for_html: bool = False) -> pd.DataFrame | str:

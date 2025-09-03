@@ -1,5 +1,5 @@
 import pandas as pd
-from src.krakowbike.utils import STREET_NAMES
+from krakowbike.utils import STREET_NAMES
 
 
 def merge_datasets(*dataframes: tuple[pd.DataFrame]) -> pd.DataFrame:

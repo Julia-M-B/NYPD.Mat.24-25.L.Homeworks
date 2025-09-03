@@ -34,7 +34,10 @@ dependencies = [
 Repository = "https://github.com/Julia-M-B/NYPD.Mat.24-25.L.Homeworks"
 
 [project.scripts]
-genreport = "src.krakowbike.__main__:main"
+genreport = "krakowbike.__main__:main"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
