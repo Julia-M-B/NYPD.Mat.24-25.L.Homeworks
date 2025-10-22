@@ -1,21 +1,16 @@
 import pandas as pd
-
-from src.krakowbike.utils import AIR_COLUMN, MONTH_TO_SEASON, STREET_NAMES
-
-#########################################
-# TODO complete functions' documentation
-#########################################
+from krakowbike.utils import AIR_COLUMN, MONTH_TO_SEASON, STREET_NAMES
 
 
-def calculate_basic_statistics(
-    df: pd.DataFrame, for_html: bool = False
-) -> pd.DataFrame | str:
+def calculate_basic_statistics(df: pd.DataFrame, for_html: bool = False) -> pd.DataFrame | str:
     """
     Return data frame with basic statistics (mean, std, min, max)
-    for each column in given dataframe.
-    :param df: dataframe for which the statistics are calculated
-    :param for_html:
-    :return: dataframe
+    for each column in a given dataframe.
+
+    :param df: pd.Dataframe, dataframe for which the statistics are calculated
+    :param for_html: bool, default False. If True, returns DataFrames
+                     converted to HTML strings.
+    :return: pd.Dataframe, dataframe with basic statistics
     """
     means = df.mean().values
     stds = df.std().values
@@ -35,7 +30,10 @@ def weather_summary(df: pd.DataFrame, for_html: bool = False) -> dict:
     - average daily temperature
     - total daily rainfall
     - air quality
-    :param df: dataframe containing weather data
+
+    :param df: pd.Dataframe, dataframe containing weather data
+    :param for_html: bool, default False. If True, returns dictionary with
+                     DataFrames converted to HTML strings.
     :return: dictionary with summary for different weather factors
     """
     df_copy = df.copy()
@@ -70,7 +68,7 @@ def weather_summary(df: pd.DataFrame, for_html: bool = False) -> dict:
         ].agg(["mean", "std", "count"]),
     }
     for k, v in summary.items():
-        summary[k] = round(v,2)
+        summary[k] = round(v, 2)
     if for_html:
         summary = dict([(k, v.to_html()) for k, v in summary.items()])
 
@@ -81,7 +79,10 @@ def calculate_seasonal_trends(df: pd.DataFrame, for_html: bool = False) -> dict:
     """
     Analyze daily cycling traffic depending on the day of the week,
     month, season and year.
-    :param df: dataframe containing traffic data
+
+    :param df: pd.Dataframe, dataframe containing traffic data
+    :param for_html: bool, default False. If True, returns dictionary with
+                     DataFrames converted to HTML strings.
     :return: dictionary with seasonal summaries
     """
     df_copy = df.copy()
@@ -105,7 +106,7 @@ def calculate_seasonal_trends(df: pd.DataFrame, for_html: bool = False) -> dict:
         ),
     }
     for k, v in analysis_results.items():
-        analysis_results[k] = round(v,2)
+        analysis_results[k] = round(v, 2)
     if for_html:
         analysis_results = dict([(k, v.to_html()) for k, v in analysis_results.items()])
 
@@ -116,7 +117,8 @@ def calculate_weather_correlations(df: pd.DataFrame) -> dict:
     """
     Calculate correlations between different weather factors
     and total daily bicycle traffic.
-    :param df: dataframe for which the correlations are calculated
+
+    :param df: pd.Dataframe, dataframe for which the correlations are calculated
     :return: dictionary containing correlations coefficients
     """
     df_copy = df.copy()

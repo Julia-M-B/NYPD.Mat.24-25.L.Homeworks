@@ -5,8 +5,56 @@
   <title>Report</title>
 
   <style>
-      .elastic-table {
+      body {
+          background: #e0e1dd;
+          color: #0d1b2a;
+      }
+
+      nav {
+          line-height: 60px;
+          background: #778da9;
+          box-shadow: 0px 3px 10px #778da9;
+      }
+
+      hr {
+          color: #415a77;
+      }
+
+      .navbar {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+      }
+
+      .navbar li {
+          list-style: none;
+      }
+
+      .navbar li a {
+          text-decoration: none;
+          font-size: 1.1em;
+          font-weight: 500;
+          text-transform: uppercase;
+          color: #0d1b2a;
+          transition: all 0.3s;
+      }
+
+      .navbar li a:hover {
+          color: #415a77;
+      }
+
+      .overview-paragraph {
+          width: 50%;
+          font-size: 1.1em;
+          font-weight: 500;
+      }
+
+      .elastic-div {
           overflow-y: auto;
+          font-family: 'Source Sans Pro Topnav', sans-serif;
+          background-color: #e0e1dd;
+          color: #0d1b2a;
+          border-radius: 5px;
       }
 
       th, td {
@@ -17,57 +65,84 @@
 
 </head>
 <body>
+
+<nav>
+  <ul class="navbar">
+    <li>
+      <a href="#overview">Overview</a>
+    </li>
+    <li>
+      <a href="#basic-statistics">Basic statistics</a>
+    </li>
+    <li>
+      <a href="#weather-summary">Weather summary</a>
+    </li>
+    <li>
+      <a href="#seasonal-trends">Seasonal trends</a>
+    </li>
+    <li>
+      <a href="#correlations">Correlations</a>
+    </li>
+    <li>
+      <a href="#charts">Charts</a>
+    </li>
+  </ul>
+</nav>
+
 <center>
-  <h1>Report on cycling traffic in Krakow, Poland</h1>
-  <p>
-    Poniższy raport zawiera podstawową analizę i wizualizację danych dotyczących
-    ruchu rowerowego w Krakowie z uwzględnieniem czynników pogodowych. Dane
-    dotyczące ruchu rowerowego zostały pobrane ze strony <a
+  <h1 id="overview">
+    Report on cycling traffic in Krakow, Poland
+  </h1>
+  <p class="overview-paragraph">
+    The following report contains basic analysis and visualization of data
+    concerning bicycle traffic in Krakow taking into account weather factors.
+    Data concerning bicycle traffic was obtained from the <a
           href="https://ztp.krakow.pl/rower/pomiary-ruchu-rowerowego/dane-tabelaryczne">ZTP
-    w Krakowie</a>. Dane o jakości powietrza zostały pobrane ze strony <a
-          href="https://powietrze.gios.gov.pl/pjp/archives">GIOŚ</a>, natomiast
-    dane dotyczące pogody zostały zaczerpnięte z <a
-          href="https://danepubliczne.imgw.pl/data/arch/ost_meteo/">archiwów
-    IMGW</a>.
+    in Krakow</a> website. Air quality data was obtained from the <a
+          href="https://powietrze.gios.gov.pl/pjp/archives">GIOŚ</a> website,
+    while weather data was sourced from <a
+          href="https://danepubliczne.imgw.pl/data/arch/ost_meteo/">IMGW
+    archives</a>.
   </p>
-  <h2>
-    Podstawowe statystyki:
+
+  <h2 id="basic-statistics">
+    Basic statistics:
   </h2>
-  <div class="elastic-table">
+  <div class="elastic-div">
     {{ basic_statistics }}
   </div>
 
   <hr>
 
-  <h2>
+  <h2 id="weather-summary">
     Weather summary:
   </h2>
-  <div>
+  <div class="elastic-div">
     <h3>
       Temperature
     </h3>
 
     {{ weather_dict.temperature_impact }}
   </div>
-  <h3>
-    Precipitation
-  </h3>
-  <div class="elastic-table">
+  <div class="elastic-div">
+    <h3>
+      Precipitation
+    </h3>
     {{ weather_dict.precipitation_impact }}
   </div>
-  <h3>
-    Air quality
-  </h3>
-  <div class="elastic-table">
+  <div class="elastic-div">
+    <h3>
+      Air quality
+    </h3>
     {{ weather_dict.air_quality_impact }}
   </div>
 
   <hr>
 
-  <h2>
+  <h2 id="seasonal-trends">
     Seasonal trends:
   </h2>
-  <div>
+  <div class="elastic-div">
     <h3>
       Yearly trends
     </h3>
@@ -88,10 +163,10 @@
 
   <hr>
 
-  <h2>
+  <h2 id="correlations">
     Weather factors correlations with total daily traffic:
   </h2>
-  <div>
+  <div class="elastic-div">
     <table>
       <thead>
       <tr>
@@ -112,25 +187,25 @@
 
   <hr>
 
-  <h2>
-    PLOTS
+  <h2 id="charts">
+    Charts
   </h2>
-  <div class="elastic-table">
+  <div class="elastic-div">
     <img src="data:image/png;base64, {{ daily_traffic_plot }}"
          alt="Daily traffic plot">
   </div>
-  <div class="elastic-table">
+  <div class="elastic-div">
     <img src="data:image/png;base64, {{ correlations_matrix }}"
          alt="Correlations matrix">
   </div>
-  <div class="elastic-table">
+  <div class="elastic-div">
     <img src="data:image/png;base64, {{ seasonal_traffic_plot }}"
          alt="Seasonal traffic plot">
   </div>
   <h3>
     Weather factors vs total daily traffic
   </h3>
-  <div class="elastic-table">
+  <div class="elastic-div">
     {% for image in weather_plot %}
     <img src="data:image/png;base64, {{ image }}" alt="Weather factor plot">
     {% endfor %}

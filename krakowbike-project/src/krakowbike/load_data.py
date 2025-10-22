@@ -6,10 +6,16 @@ import pandas as pd
 
 def load_data(dir_path: str, dataset: str) -> pd.DataFrame:
     """
-    Loading dataset
-    :param dir_path:
-    :param dataset:
-    :return:
+    Load and concatenate CSV files matching a dataset pattern from a directory.
+
+    Searches for CSV files containing the specified dataset name in the filename,
+    loads them with 'Data' column as index, and concatenates them into a single
+    DataFrame.
+
+    :param dir_path: str, path to the directory containing CSV files to load.
+    :param dataset: str, pattern to match in filenames.
+    :return: pd.DataFrame, concatenated DataFrame from all matching CSV files,
+             with 'Data' column as index.
     """
     fpaths = glob.glob(f"{dir_path}/*{dataset}*")
     returned_df = pd.concat(

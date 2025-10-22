@@ -14,10 +14,6 @@ from src.krakowbike.preprocess_data import (
 
 MOCK_STREET_NAMES = ["street_a", "street_b", "street_c"]
 
-#########################################
-# TODO complete functions' documentation
-#########################################
-
 
 # tests for merge_datasets function
 def test_merge_multiple_dataframes():
